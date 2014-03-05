@@ -1,0 +1,1 @@
+<?php echo $this->mvc('forms', $_app['ini']);
