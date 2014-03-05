@@ -58,7 +58,7 @@ New form data has been submitted for '".$form['title']."':
 			$msg .= '
 Do not reply to this message. It was automated.';
 
-			mail($form['email'], "New form data submitted: ".$form['title'], $msg);
+			mail($form['email'], "New form data submitted: ".$form['title'], $msg, 'From: noreply@'.$_SERVER['SERVER_NAME']);
 		}
 			
 		echo '<p>Form submitted successfully. Thank you!</p>';
