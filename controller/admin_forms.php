@@ -76,34 +76,24 @@ class admin_forms extends app
 			$msg = 'Saved.';
 		}
 		
-		if(!isset($var[2]))
-		{
-			if(is_dir(ROOT.'packages/tinymce/'))
-				echo file_get_contents(ROOT.'packages/tinymce/js.html');
-			else
-				echo 'No "TinyMCE" package found at '.$this->request->absbase.'packages/tinymce/';
-				
-			$raw = '<a href="%appurl%'.implode('/', $var).'/raw">raw</a>';
-		} else 
-			$raw = '<a href="%appurl%'.implode('/', array_slice($var, 0, -1)).'">wysiwyg</a>';
-		
 		$result = $this->db->query("SELECT * FROM lf_forms WHERE id = ".$match[0]);
 		$row = mysql_fetch_assoc($result);
 		echo '
 			<form action="%baseurl%apps/manage/forms/edit/'.$row['id'].'/" method="post">
-				<input type="submit" value="Save" /> '.$msg.'
-				<br />'.$raw.'<br />
+				<input type="submit" value="Save" /> <br />'.$msg.'
 				Title: <input style="font-size: 22px; padding: 5px; width:100%" name="title" value="'.htmlspecialchars($row['title'], ENT_QUOTES).'" />
 				<br /><br />
 				Email: <input style="font-size: 22px; padding: 5px; width:100%" name="email" value="'.$row['email'].'" />
 				<br /><br />
-				Content: <textarea name="content" rows="25" style="width: 100%">'.htmlspecialchars($row['content'], ENT_QUOTES).'</textarea>
+				Content: <textarea id="ckeditor" name="content" rows="25" style="width: 100%">'.htmlspecialchars($row['content'], ENT_QUOTES).'</textarea>
 				<br />
 				[<a onclick="return confirm(\'Are you sure?\');" href="%baseurl%apps/manage/forms/rm/'.$row['id'].'/">Delete</a>]
 				<br /><br />
 				<input type="submit" value="Save" /> '.$msg.'
 			</form>
 		';
+		
+		readfile(ROOT.'system/lib/editor.js');
 		
 	}
 	
@@ -129,31 +119,18 @@ class admin_forms extends app
 			$msg = 'Page Created.';
 		} 
 		
-		
-		if(!isset($var[1]))
-		{
-			if(is_dir(ROOT.'packages/tinymce/'))
-				echo file_get_contents(ROOT.'packages/tinymce/js.html');
-			else
-				echo 'No "TinyMCE" package found at '.$this->request->absbase.'packages/tinymce/';
-				
-			$raw = '<a href="%appurl%'.implode('/', $var).'/raw">raw</a>';
-		} else 
-			$raw = '<a href="%appurl%'.implode('/', array_slice($var, 0, -1)).'">wysiwyg</a>';
-		
 		echo '
-			<a href="%appurl%'.implode('/', $var).'/raw">raw</a>
 			<form action="%baseurl%apps/manage/forms/newpage/" method="post">
-				<input type="submit" value="Submit" /> '.$msg.'
-				<br />'.$raw.'<br />
+				<input type="submit" value="Submit" /> <br />'.$msg.'
 				Title: <input style="font-size: 22px; padding: 5px; width:100%" name="title" />
 				<br /><br />
 				Email: <input style="font-size: 22px; padding: 5px; width:100%" name="email" value="'.$row['email'].'" />
 				<br /><br />
-				Content: <textarea name="content" rows="25" style="width: 100%"></textarea>
+				Content: <textarea id="ckeditor" name="content" rows="25" style="width: 100%"></textarea>
 				<br />
 				<input type="submit" value="Submit" /> '.$msg.'
 			</form>
 		';
+		readfile(ROOT.'system/lib/editor.js');
 	}
 }
