@@ -4,7 +4,7 @@
 <ol class="pages-list">
 <?php foreach($forms as $form): ?>
 	<li>
-		<a href="%appurl%edit/<?=$form['id'];?>/"><?=$form['title'];?></a>
+		<a href="%appurl%edit/<?=$form['id'];?>/" class="form-title"><?=$form['title'];?></a>
 		<a href="%appurl%listitems/<?=$form['id'];?>/" class="view-submissions">Submissions</a> 
 	</li>
 <?php endforeach; ?>
