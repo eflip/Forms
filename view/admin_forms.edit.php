@@ -1,4 +1,4 @@
-<form action="%appurl%edit/<?=$form['id'];?>/" method="post">
+<form action="%appurl%edit/<?=$form['id'];?>/" method="post" class="page-editor">
 	<input type="submit" value="Save" /> <br /><?=$msg;?>
 	Title: <input style="font-size: 22px; padding: 5px; width:100%" name="title" value="<?=htmlspecialchars($form['title'], ENT_QUOTES);?>" />
 	<br /><br />
