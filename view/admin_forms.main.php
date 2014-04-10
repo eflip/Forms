@@ -1,5 +1,5 @@
 <div class="new-page-button">
-	<a href="%appurl%newpage/">Create New Form Page</a>
+	<a href="%appurl%newpage/">Create New Form</a>
 </div>
 <ol class="pages-list">
 <?php foreach($forms as $form): ?>
