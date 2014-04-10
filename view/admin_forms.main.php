@@ -1,10 +1,11 @@
-<h3>(<a href="%baseurl%apps/manage/forms/newpage/">Create New Page</a>)</h3>
-<p>Select an article below to edit it.</p>
-<ol>
+<div class="new-page-button">
+	<a href="%appurl%newpage/">Create New Form Page</a>
+</div>
+<ol class="pages-list">
 <?php foreach($forms as $form): ?>
 	<li>
-		[<a href="%baseurl%apps/manage/forms/listitems/<?=$form['id'];?>/">View Submissions</a>] <a href="%baseurl%apps/manage/forms/edit/<?=$form['id'];?>/"><?=$form['title'];?></a>
-		 
+		<a href="%appurl%edit/<?=$form['id'];?>/"><?=$form['title'];?></a>
+		<a href="%appurl%listitems/<?=$form['id'];?>/" class="view-submissions">View Submissions</a> 
 	</li>
 <?php endforeach; ?>
 	

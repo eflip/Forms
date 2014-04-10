@@ -1,3 +1,4 @@
+<link href="%relbase%lf/apps/forms/css/forms_admin.styles.css" rel="stylesheet">
 <?php
 
 class admin_forms extends app
@@ -68,7 +69,7 @@ class admin_forms extends app
 					'".mysql_real_escape_string($_POST['content'])."', 
 					'".mysql_real_escape_string($_POST['email'])."'
 				)");
-			$msg = 'Page Created.';
+			redirect302($this->lf->appurl.'edit/'.$this->db->last());
 		} 
 		
 		include 'view/admin_forms.newpage.php';

@@ -1,4 +1,4 @@
-<form action="http://dev5.bioshazard.com/littlefoot/apps/manage/forms/newpage/" method="post">
+<form action="%appurl%newpage" method="post">
 	<input type="submit" value="Submit" /> <br /><?=$msg;?>
 	Title: <input style="font-size: 22px; padding: 5px; width:100%" name="title" />
 	<br /><br />
