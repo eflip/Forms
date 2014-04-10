@@ -5,7 +5,7 @@
 <?php foreach($forms as $form): ?>
 	<li>
 		<a href="%appurl%edit/<?=$form['id'];?>/"><?=$form['title'];?></a>
-		<a href="%appurl%listitems/<?=$form['id'];?>/" class="view-submissions">View Submissions</a> 
+		<a href="%appurl%listitems/<?=$form['id'];?>/" class="view-submissions">Submissions</a> 
 	</li>
 <?php endforeach; ?>
 	
