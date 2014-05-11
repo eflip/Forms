@@ -40,7 +40,7 @@ class forms extends app
 		
 		$data = json_encode($_POST);
 		$result = $this->db->query("INSERT INTO lf_formdata (`id`, `form_id`, `data`, `date`) VALUES (
-			NULL, ".intval($this->ini).", '".mysql_real_escape_string($data)."', NOW()
+			NULL, ".intval($this->ini).", '".$this->db->escape($data)."', NOW()
 		)");
 		
 		if(!$result) return '<p>Failed to submit. Contact an admin.</p>';

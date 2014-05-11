@@ -38,8 +38,8 @@ class admin_forms extends app
 			$result = $this->db->query("
 				UPDATE lf_forms SET 
 					title 	= '".htmlspecialchars($_POST['title'], ENT_QUOTES)."', 
-					content = '".mysql_real_escape_string($_POST['content'])."',
-					email = '".mysql_real_escape_string($_POST['email'])."' 
+					content = '".$this->db->escape($_POST['content'])."',
+					email = '".$this->db->escape($_POST['email'])."' 
 				WHERE id = ".$match[0]
 			);
 			$msg = 'Saved.';
@@ -66,8 +66,8 @@ class admin_forms extends app
 					NULL, 
 					".$this->request->api('getuid').", 
 					'".htmlspecialchars($_POST['title'], ENT_QUOTES)."', 
-					'".mysql_real_escape_string($_POST['content'])."', 
-					'".mysql_real_escape_string($_POST['email'])."'
+					'".$this->db->escape($_POST['content'])."', 
+					'".$this->db->escape($_POST['email'])."'
 				)");
 			redirect302($this->lf->appurl.'edit/'.$this->db->last());
 		} 
