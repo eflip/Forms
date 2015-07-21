@@ -6,13 +6,13 @@ class forms extends app
 	{
 		$form = $this->db->fetch("SELECT * FROM lf_forms WHERE id = ".intval($this->ini));
 
-		$pos = strpos($form['content'], '%recaptcha%');
+		$pos = strpos($form['content'], '{recaptcha}');
 		
 		if($pos !== false)
 		{
 			$publickey = '6LffguESAAAAAKaa8ZrGpyzUNi-zNlQbKlcq8piD'; // littlefootcms public key
 			$recaptcha = recaptcha_get_html($publickey);
-			$form['content'] = str_replace('%recaptcha%', $recaptcha, $form['content']);
+			$form['content'] = str_replace('{recaptcha}', $recaptcha, $form['content']);
 		}
 		
 		echo '<h2>'.$form['title'].'</h2>';
@@ -25,7 +25,7 @@ class forms extends app
 	{
 		$form = $this->db->fetch("SELECT * FROM lf_forms WHERE id = ".intval($this->ini));
 		
-		$pos = strpos($form['content'], '%recaptcha%');
+		$pos = strpos($form['content'], '{recaptcha}');
 		if($pos !== false) // recaptcha was used, check it
 		{
 			if(!isset($_POST["recaptcha_challenge_field"],$_POST["recaptcha_response_field"])) return 'Invalid POST';
