@@ -8,12 +8,13 @@ class forms extends app
 
 		$pos = strpos($form['content'], '{recaptcha}');
 		
-		if($pos !== false)
+		if($pos !== false) 
 		{
 			$publickey = '6LffguESAAAAAKaa8ZrGpyzUNi-zNlQbKlcq8piD'; // littlefootcms public key
-			$recaptcha = recaptcha_get_html($publickey);
+			$recaptcha = '<div class="lf-captcha">'.recaptcha_get_html($publickey).'</div>';
 			$form['content'] = str_replace('{recaptcha}', $recaptcha, $form['content']);
-		}
+			$form['content'] = $form['content'];
+		} 
 		
 		echo '<h2>'.$form['title'].'</h2>';
 		echo '<form action="%appurl%submit/" method="post">';
